@@ -23,6 +23,8 @@
   "author": "M. Faisal Nadeem",
   "license": "MIT",
   "dependencies": {
-    "esm": "^3.2.18"
+    "arg": "^4.1.3",
+    "esm": "^3.2.18",
+    "inquirer": "^7.0.4"
   }
 }
