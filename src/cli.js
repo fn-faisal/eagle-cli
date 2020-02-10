@@ -8,6 +8,8 @@ import {
     createProject
 } from './main';
 
+const pkg = require('../package.json');
+
 async function copyTemplateFiles(options) {
     return copy(options.templateDirectory, options.targetDirectory, {
         clobber: false,
@@ -17,23 +19,30 @@ async function copyTemplateFiles(options) {
 function parseArgumentsIntoOptions(rawArgs) {
     const args = arg({
         '--store': String,
-        '--default': Boolean,
         '--name': String,
+        '--default': Boolean,
+        '--version': Boolean,
         '-d': '--default',
         '-s': '--store',
-        '-n': '--name'
+        '-n': '--name',
+        '-v': '--version'
     }, {
         argv: rawArgs.slice(2),
     });
+
     return {
         name: args['--name'] || null,
         store: args['--store'] || null,
         options: args['--op'] || false,
         default: args['--default'] || false,
+        version: args['--version'] || false
     };
 }
 
 async function promptForMissingOptions(options) {
+
+    
+
     if (options.default) {
         return {
             ...options,
@@ -72,6 +81,10 @@ async function promptForMissingOptions(options) {
 
 export async function cli(args) {
     let options = parseArgumentsIntoOptions(args);
+    if ( options.version ) {
+        console.log(`Version : %s`, chalk.greenBright.bold(pkg.version));
+        return;
+    }
     options = await promptForMissingOptions(options);
     await createProject(options);
 }
