@@ -1,0 +1,28 @@
+{
+  "name": "@codesmmith/eagle-cli",
+  "version": "1.0.0",
+  "description": "A CLI to bootstrap my new projects",
+  "main": "src/cli.js",
+  "bin": {
+    "egl": "bin/egl"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "egl",
+    "eagle",
+    "eagle-cli",
+    "react-native-eagle",
+    "react-native-egl"
+  ],
+  "author": "M. Faisal Nadeem",
+  "license": "MIT",
+  "dependencies": {
+    "esm": "^3.2.18"
+  }
+}
