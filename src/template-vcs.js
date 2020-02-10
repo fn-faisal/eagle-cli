@@ -1,3 +1,3 @@
 export default {
-    blank: 'https://github.com/fn-faisal/eagle-starter-template#production'
+    blank: 'https://github.com/fn-faisal/eagle-template-blank'
 }
