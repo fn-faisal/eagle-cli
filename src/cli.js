@@ -5,7 +5,7 @@ import {
     stores
 } from './template-configs';
 import {
-    createProject
+    createProject, createScreen
 } from './main';
 
 async function copyTemplateFiles(options) {
@@ -19,6 +19,7 @@ function parseArgumentsIntoOptions(rawArgs) {
         '--store': String,
         '--default': Boolean,
         '--name': String,
+        '--new-screen': String,
         '-d': '--default',
         '-s': '--store',
         '-n': '--name'
@@ -30,6 +31,7 @@ function parseArgumentsIntoOptions(rawArgs) {
         store: args['--store'] || null,
         options: args['--op'] || false,
         default: args['--default'] || false,
+        newScreen: args['--new-screen'] || null,
     };
 }
 
@@ -72,6 +74,10 @@ async function promptForMissingOptions(options) {
 
 export async function cli(args) {
     let options = parseArgumentsIntoOptions(args);
-    options = await promptForMissingOptions(options);
-    await createProject(options);
+    if ( options.newScreen ) {
+        await createScreen(options);
+    } else {
+        options = await promptForMissingOptions(options);
+        await createProject(options);
+    }
 }
