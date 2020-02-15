@@ -2,7 +2,6 @@
   "name": "@codesmmith/eagle-cli",
   "version": "0.0.3",
   "description": "A CLI to bootstrap my new projects",
-  "main": "src/cli.js",
   "bin": {
     "egl": "bin/egl"
   },
@@ -10,7 +9,8 @@
     "access": "public"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
   },
   "keywords": [
     "cli",
@@ -29,5 +29,8 @@
     "esm": "^3.2.18",
     "inquirer": "^7.0.4",
     "ncp": "^2.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^3.7.5"
   }
 }
