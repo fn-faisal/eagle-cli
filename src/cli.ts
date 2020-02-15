@@ -3,6 +3,8 @@ import { CmdInit } from "./commands/CmdInit";
 import { CmdScreen } from "./commands/CmdScreen";
 import * as arg from 'arg';
 import { OP_INIT, OP_SCREEN } from "./constants/operation";
+import { ICmd } from "./commands/ICmd";
+import * as chalk from "chalk";
 
 // import arg from 'arg';
 // import inquirer from 'inquirer';
@@ -95,18 +97,33 @@ function parseArgumentsIntoOptions (rawArgs: any) {
  */
 export function run (args: any) {
     const options = parseArgumentsIntoOptions(args);
-    const operation = options._.pop();
+
+    if ( options._.length <= 0 ) {
+        console.log('['+chalk.redBright('ERROR')+'] Operation required');
+        console.log('\t - '+chalk.greenBright('new')+' [project name]: create a new eagle project.');
+        console.log('\t - '+chalk.greenBright('screen')+' [screen name]: add a new screen to your eagle project.');
+        return;
+    }
+
+    const operation = options._[0];
     // check operation.
     switch (operation) {
         case OP_INIT:
-            console.log('create a new project');
+            if ( options._.length <= 1 ) {
+                console.log('['+chalk.redBright('ERROR')+'] Project name required');
+                return;
+            }
+            (<CmdInit>CmdFactory.make(new CmdInit)).execute(options._[1]);
             break;
         case OP_SCREEN:
-            console.log('new screen');
+            if ( options._.length <= 1 ) {
+                console.log('['+chalk.redBright('ERROR')+'] Screen name required');
+                return;
+            }
+            (<CmdScreen>CmdFactory.make(new CmdScreen)).execute();
             break;
         default:
             console.log('Output Help');
     }
-    // CmdFactory.make(new CmdScreen);
 
 }

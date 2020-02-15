@@ -1,3 +1,3 @@
 export interface ICmd {
-    execute() : void;
+    execute( name?: String ) : void;
 }

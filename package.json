@@ -1,6 +1,6 @@
 {
   "name": "@codesmmith/eagle-cli",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A CLI to bootstrap my new projects",
   "bin": {
     "egl": "bin/egl"
@@ -23,10 +23,12 @@
   "author": "M. Faisal Nadeem",
   "license": "MIT",
   "dependencies": {
+    "@types/node": "^13.7.1",
     "arg": "^4.1.3",
+    "axios": "^0.19.2",
     "chalk": "^3.0.0",
-    "download-git-repo": "^3.0.2",
     "esm": "^3.2.18",
+    "git": "^0.1.5",
     "inquirer": "^7.0.4",
     "ncp": "^2.0.0"
   },
