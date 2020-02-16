@@ -1,3 +1,2 @@
-import React from 'react';
-import {View} from 'react-native';
-export default (<View></View>);
+import * as React from 'react';
+export default <></>;
