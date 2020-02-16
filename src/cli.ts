@@ -120,7 +120,7 @@ export function run (args: any) {
                 console.log('['+chalk.redBright('ERROR')+'] Screen name required');
                 return;
             }
-            (<CmdScreen>CmdFactory.make(new CmdScreen)).execute();
+            (<CmdScreen>CmdFactory.make(new CmdScreen)).execute(options._[1]);
             break;
         default:
             console.log('Output Help');

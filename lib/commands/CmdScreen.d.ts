@@ -1,4 +1,4 @@
 import { ICmd } from './ICmd';
 export declare class CmdScreen implements ICmd {
-    execute(): void;
+    execute(name: String): void;
 }
